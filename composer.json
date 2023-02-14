@@ -1,0 +1,20 @@
+{
+    "name": "siam/wordpress_starter_plugin_with_vue3",
+    "description": "A starter plugin for develop wordpress plugin with Vue3",
+    "type": "wordpress-plugin",
+    "license": "GPLv2",
+    "authors": [
+        {
+            "name": "Md Siam Maruf",
+            "email": "siam.maruf1@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Cofixer\\": "includes/"
+        },
+        "files": []
+    }
+}

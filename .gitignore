@@ -1,0 +1,7 @@
+/node_modules/
+/vendor/
+.DS_Store
+.idea
+/package-lock.json
+/composer.lock
+/assets/mix-manifest.json
