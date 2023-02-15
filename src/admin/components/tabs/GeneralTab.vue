@@ -31,7 +31,7 @@
         </tbody>
       </table>
       <p class="submit">
-        <button type="submit" class="button button-primary">{{ loadingText }}}</button>
+        <button type="submit" class="button button-primary">{{ loadingText }}</button>
       </p>
     </form>
   </div>
@@ -48,7 +48,7 @@ export default {
     this.fetchSettings()
   },
   computed: {
-    ...mapActions(['GET_GENERAL_SETTINGS','GET_LOADING_TEXT']),
+    ...mapGetters(['GET_GENERAL_SETTINGS','GET_LOADING_TEXT']),
     formData: {
       get(){
         return this.GET_GENERAL_SETTINGS

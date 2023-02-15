@@ -2,14 +2,17 @@
 
 namespace Cofixer\Api;
 use WP_REST_Controller;
+use WP_REST_Server;
 
 class Settings_Route extends WP_REST_Controller{
 
 	protected $namespace;
 	protected $rest_base;
+	protected int $version;
 
 	public function __construct(){
-		$this->namespace = "cofixer/v1";
+		$this->version = 1;
+		$this->namespace = "/cofixer/v";
 		$this->rest_base = "settings";
 	}
 
@@ -18,17 +21,17 @@ class Settings_Route extends WP_REST_Controller{
 	 */
 	public function register_routes(){
 		register_rest_route(
-			$this->namespace,
-			'/'.$this->rest_base,
+			$this->namespace.$this->version,
+			$this->rest_base,
 			[
 				[
-					'methods'   => \WP_REST_Server::READABLE,
+					'methods'   => WP_REST_Server::READABLE,
 					'callback'  => [ $this, 'get_item' ],
 					'permission_callback' =>[ $this, 'get_item_permissions_check' ],
 					'args'      => $this->get_collection_params()
 				],
 				[
-					'methods'   => \WP_REST_Server::CREATABLE,
+					'methods'   => WP_REST_Server::CREATABLE,
 					'callback'  => [ $this, 'create_item' ],
 					'permission_callback' =>[ $this, 'create_items_permission_check' ],
 					'args'      => $this->get_endpoint_args_for_item_schema(true),
@@ -54,9 +57,10 @@ class Settings_Route extends WP_REST_Controller{
 	 * Get items permission check
 	 */
 	public function get_item_permissions_check( $request ){
-		if ( current_user_can('administrator') ){
-			return true;
-		}
+//		if ( current_user_can('administrator') ){
+//			return true;
+//		}
+		return true;
 	}
 
 	/**

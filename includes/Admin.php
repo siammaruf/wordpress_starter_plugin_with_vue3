@@ -14,6 +14,5 @@ class Admin{
 	public function __construct(){
 		new Menu();
 		new Assets();
-		new Api();
 	}
 }

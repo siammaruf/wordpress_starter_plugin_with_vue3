@@ -18,6 +18,7 @@ if ( ! defined('ABSPATH') ){
 require __DIR__.'/vendor/autoload.php';
 
 use Cofixer\Admin;
+use Cofixer\Api;
 
 /*
  * Main Plugin Class
@@ -38,6 +39,7 @@ final class Cofixer_Plugin{
 		register_activation_hook(__FILE__,[$this,'activate']);
 		add_action('plugins_loaded',[$this, 'init_plugin']);
 	}
+
 
 	/**
 	 * Initializes a singleton instance
@@ -75,6 +77,7 @@ final class Cofixer_Plugin{
 		if (is_admin()){
 			new Admin();
 		}
+		new Api();
 	}
 
 	/**
