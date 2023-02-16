@@ -19,6 +19,7 @@ require __DIR__.'/vendor/autoload.php';
 
 use Cofixer\Admin;
 use Cofixer\Api;
+use Cofixer\Installer;
 
 /*
  * Main Plugin Class
@@ -86,7 +87,7 @@ final class Cofixer_Plugin{
 	 * @retun void
 	 */
 	public function activate(): void{
-
+		( new Installer() )->run();
 	}
 }
 
