@@ -45,9 +45,9 @@ class Settings_Route extends WP_REST_Controller{
 	 */
 	public function get_item($request): \WP_Error|\WP_REST_Response|\WP_HTTP_Response{
 		$response = [
-			'firstname' => get_option( 'cf_settings_firstname', true ),
-			'lastname'  => get_option( 'cf_settings_lastname', true ),
-			'email'     => get_option( 'cf_settings_email', true ),
+			'firstname' => get_option( 'cf_settings_firstname'),
+			'lastname'  => get_option( 'cf_settings_lastname'),
+			'email'     => get_option( 'cf_settings_email'),
 		];
 
 		return rest_ensure_response( $response );
@@ -56,11 +56,11 @@ class Settings_Route extends WP_REST_Controller{
 	/**
 	 * Get items permission check
 	 */
-	public function get_item_permissions_check( $request ){
-//		if ( current_user_can('administrator') ){
-//			return true;
-//		}
-		return true;
+	public function get_item_permissions_check( $request ): bool{
+		if ( current_user_can( 'manage_options' ) ){
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -69,9 +69,9 @@ class Settings_Route extends WP_REST_Controller{
 	public function create_item($request): \WP_Error|\WP_REST_Response|\WP_HTTP_Response{
 
 		// Data validation
-		$firstname  = isset( $$request['firstname'] ) ? sanitize_text_field( $request['firstname'] ): '';
-		$lastname   = isset( $$request['lastname'] ) ? sanitize_text_field( $request['lastname'] ): '';
-		$email      = isset( $$request['email'] ) && is_email( $request[ 'email' ] ) ? sanitize_text_field( $request['email'] ): '';
+		$firstname  = isset( $request['firstname'] ) ? sanitize_text_field( $request['firstname'] ): '';
+		$lastname   = isset( $request['lastname'] ) ? sanitize_text_field( $request['lastname'] ): '';
+		$email      = isset( $request['email'] ) && is_email( $request[ 'email' ] ) ? sanitize_text_field( $request['email'] ): '';
 
 		// Save option data into Wordpress
 		update_option('cf_settings_firstname', $firstname);

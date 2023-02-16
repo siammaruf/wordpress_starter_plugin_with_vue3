@@ -41,6 +41,7 @@ class Assets{
 					'adminUrl'  => admin_url( '/' ),
 					'ajaxUrl'   => admin_url( 'admin-ajax.php' ),
 					'apiUrl'    => home_url( '/wp-json' ),
+					'apiNonce'     => wp_create_nonce('wp_rest'),
 				]
 			],
 		];

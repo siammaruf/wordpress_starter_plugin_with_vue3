@@ -9,7 +9,7 @@
               <label for="firstname">Firstname</label>
             </th>
             <td>
-              <input id="firstname" class="regular-text" type="text" v-model="formData.firstname">
+              <input id="firstname" placeholder="Enter first name" class="regular-text" type="text" v-model="formData.firstname">
             </td>
           </tr>
           <tr>
@@ -17,7 +17,7 @@
               <label for="lastname">Lastname</label>
             </th>
             <td>
-              <input id="lastname" class="regular-text" type="text" v-model="formData.lastname">
+              <input id="lastname" placeholder="Enter last name" class="regular-text" type="text" v-model="formData.lastname">
             </td>
           </tr>
           <tr>
@@ -25,7 +25,7 @@
               <label for="email">Email</label>
             </th>
             <td>
-              <input id="email" class="regular-text" type="email" v-model="formData.email">
+              <input id="email" placeholder="Enter email" class="regular-text" type="email" v-model="formData.email">
             </td>
           </tr>
         </tbody>
@@ -41,12 +41,15 @@
 import { mapActions, mapGetters } from 'vuex'
 export default {
   name: "GeneralTab",
+
   data(){
     return{}
   },
+
   mounted(){
     this.fetchSettings()
   },
+
   computed: {
     ...mapGetters(['GET_GENERAL_SETTINGS','GET_LOADING_TEXT']),
     formData: {
